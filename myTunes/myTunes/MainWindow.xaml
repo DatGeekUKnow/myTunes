@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:myTunes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="myTunes by Garrett Harr &amp; Casey Whitener" Height="500" Width="800" Background="#FF2B2525" Foreground="White">
     <Grid>
+        <ListBox Height="375" Width="175" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0" BorderBrush="#FF12F936" Background="#FF3D3737">
+
+        </ListBox>
 
     </Grid>
 </Window>

@@ -1,4 +1,4 @@
-﻿namespace MiniPlayerWpf
+﻿namespace hTunes
 {
     public class Song
     {
