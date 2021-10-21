@@ -7,9 +7,11 @@
         mc:Ignorable="d"
         Title="myTunes by Garrett Harr &amp; Casey Whitener" Height="500" Width="800" Background="#FF2B2525" Foreground="White">
     <Grid>
+        <ToolBar Name="myToolBar" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="40" Background="#FF3D3737" ToolBarTray.IsLocked="True" Foreground="#FF12F936" Loaded="myToolBar_Loaded"/>
         <ListBox Height="375" Width="175" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0" BorderBrush="#FF12F936" Background="#FF3D3737">
 
         </ListBox>
+        <DataGrid Height="375" Width="575" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,50,0,0" Background="#FF3D3737" BorderBrush="#FF12F936"/>
 
     </Grid>
 </Window>

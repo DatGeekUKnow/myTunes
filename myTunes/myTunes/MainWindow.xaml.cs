@@ -23,6 +23,25 @@ namespace myTunes
         public MainWindow()
         {
             InitializeComponent();
+           
+        }
+
+        // https://stackoverflow.com/questions/4662428/how-to-hide-arrow-on-right-side-of-a-toolbar/4662570
+        // code used to hide pesky drop down arrow on right side of toolbar
+        private void myToolBar_Loaded(object sender, RoutedEventArgs e)
+        {
+            ToolBar toolBar = sender as ToolBar;
+            var overflowGrid = toolBar.Template.FindName("OverflowGrid", toolBar) as FrameworkElement;
+            if (overflowGrid != null)
+            {
+                overflowGrid.Visibility = Visibility.Collapsed;
+            }
+
+            var mainPanelBorder = toolBar.Template.FindName("MainPanelBorder", toolBar) as FrameworkElement;
+            if (mainPanelBorder != null)
+            {
+                mainPanelBorder.Margin = new Thickness(0);
+            }
         }
     }
 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" standalone="yes"?>
+<music>
+  <song>
+    <id>1</id>
+    <title>Rude</title>
+    <artist>Magic!</artist>
+    <album>Don't Kill the Magic</album>
+    <filename>C:\Users\Geek\Music\01 Rude.mp3</filename>
+    <length>03:44</length>
+    <genre>Rock</genre>
+  </song>
+  <song>
+    <id>2</id>
+    <title>Lets Fall in Love</title>
+    <artist>Frank Sinatra</artist>
+    <album>?</album>
+    <filename>C:\Users\fmccown\Music\songs\Lets Fall in Love.mp3</filename>
+    <length />
+    <genre />
+  </song>
+  <song>
+    <id>3</id>
+    <title>Wrong</title>
+    <artist>Depeche Mode</artist>
+    <album>Wrong - Single</album>
+    <filename>C:\Users\fmccown\Music\songs\Wrong.mp3</filename>
+    <length>03:13</length>
+    <genre>Alternative</genre>
+  </song>
+  <song>
+    <id>4</id>
+    <title>Apologize (Featuring One Republic)</title>
+    <artist>Timbaland</artist>
+    <album>Shock Value</album>
+    <filename>C:\Users\fmccown\Music\songs\Apologize (feat. OneRepublic).m4a</filename>
+    <length>03:04</length>
+    <genre>Hip-Hop/Rap</genre>
+  </song> 
+  <song>
+    <id>5</id>
+    <title>Kansas City (Re-Recorded / Remastered)</title>
+    <artist>Various Artists</artist>
+    <album>The Greatest 1 Hit Wonders (Re-Recorded / Remastered Versions)</album>
+    <filename>C:\Users\fmccown\Music\songs\Kansas-City.mp3</filename>
+    <length>2:21</length>
+    <genre>Pop</genre>
+  </song>
+  <playlist>
+    <name>Cool stuff</name>
+  </playlist>
+  <playlist>
+    <name>Quiet music</name>
+  </playlist>
+  <playlist_song>
+    <song_id>1</song_id>
+    <playlist_name>Cool stuff</playlist_name>
+    <position>1</position>
+  </playlist_song>
+  <playlist_song>
+    <song_id>3</song_id>
+    <playlist_name>Cool stuff</playlist_name>
+    <position>2</position>
+  </playlist_song>
+  <playlist_song>
+    <song_id>2</song_id>
+    <playlist_name>Cool stuff</playlist_name>
+    <position>3</position>
+  </playlist_song>
+  <playlist_song>
+    <song_id>2</song_id>
+    <playlist_name>Quiet music</playlist_name>
+    <position>1</position>
+  </playlist_song>
+</music>
