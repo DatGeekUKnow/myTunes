@@ -30,9 +30,14 @@ namespace myTunes
             musicDataSet.ReadXmlSchema("music.xsd");
             musicDataSet.ReadXml("music.xml");
 
+            // TODO: update playlists list dynamically, look into McCown's Observable Collection example
+            var playlists = (from DataRow dr in musicDataSet.Tables["playlist"].Rows
+                            select dr["name"].ToString()).ToList();
+            playlists.Insert(0, "All Music");
+
             // initialize data grid to music located in music.xml
             musicDataGrid.ItemsSource = musicDataSet.Tables["song"].DefaultView;
-            playlistListBox.ItemsSource = musicDataSet.Tables["playlist"].AsDataView();
+            playlistListBox.ItemsSource = playlists;
         }
 
         // https://stackoverflow.com/questions/4662428/how-to-hide-arrow-on-right-side-of-a-toolbar/4662570
