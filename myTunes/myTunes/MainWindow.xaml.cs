@@ -21,12 +21,12 @@ namespace myTunes
     /// </summary>
     public partial class MainWindow : Window
     {
+        DataSet musicDataSet = new DataSet();
         public MainWindow()
         {
             InitializeComponent();
 
             // Link to database
-            DataSet musicDataSet = new DataSet();
             musicDataSet.ReadXmlSchema("music.xsd");
             musicDataSet.ReadXml("music.xml");
 

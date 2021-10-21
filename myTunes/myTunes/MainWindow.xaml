@@ -11,15 +11,23 @@
         <ListBox Name="playlistListBox" Height="375" Width="175" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0" BorderBrush="#FF12F936" Background="#FF3D3737">
 
         </ListBox>
-        <DataGrid Name="musicDataGrid" Width="575" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,50,0,0" Background="Black" BorderBrush="#FF12F936" Foreground="#FF12F936" HorizontalGridLinesBrush="#FFA6A3A3" VerticalGridLinesBrush="#FFA6A3A3" CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" HeadersVisibility="Column" IsReadOnly="True">
+        <DataGrid Name="musicDataGrid" Width="575" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,50,0,0" Background="#FF3D3737" BorderBrush="#FF12F936" Foreground="GhostWhite" HorizontalGridLinesBrush="#FFA6A3A3" VerticalGridLinesBrush="#FFA6A3A3" CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" FontFamily="MV Boli">
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
-                    <Setter Property="Background" Value="Black"/>
+                    <Setter Property="Background" Value="#FF2B2828"/>
+                    <Setter Property="FontSize" Value="18"/>
                 </Style>
                 <Style TargetType="DataGridColumnHeader">
-                    <Setter Property="Background" Value="Black"/>
+                    <Setter Property="Background" Value="#FF1D1D1D"/>
+                    <Setter Property="FontSize" Value="20"/>
                 </Style>
             </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" Binding="{Binding title}"/>
+                <DataGridTextColumn Header="Artist" Binding="{Binding artist}"/>
+                <DataGridTextColumn Header="Album" Binding="{Binding album}"/>
+                <DataGridTextColumn Header="Genre" Binding="{Binding genre}"/>
+            </DataGrid.Columns>
         </DataGrid>
 
     </Grid>
