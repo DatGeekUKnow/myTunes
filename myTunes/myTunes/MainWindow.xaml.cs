@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -21,9 +22,26 @@ namespace myTunes
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly MusicRepo musicRepo;
+        private readonly ObservableCollection<string> playlists;
+        
         public MainWindow()
         {
             InitializeComponent();
+
+            try
+            {
+                musicRepo = new MusicRepo();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error loading file: " + e.Message, "myTunes", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            // make playlists an observablecollection to allow easy gui updates
+            playlists = new ObservableCollection<string>(musicRepo.Playlists);
+            playlists.Insert(0, "All Music");
 
             // Link to database
             DataSet musicDataSet = new DataSet();
@@ -31,10 +49,6 @@ namespace myTunes
             musicDataSet.ReadXml("music.xml");
 
             // TODO: update playlists list dynamically, look into McCown's Observable Collection example
-            var playlists = (from DataRow dr in musicDataSet.Tables["playlist"].Rows
-                            select dr["name"].ToString()).ToList();
-            playlists.Insert(0, "All Music");
-
             // initialize data grid to music located in music.xml
             musicDataGrid.ItemsSource = musicDataSet.Tables["song"].DefaultView;
             playlistListBox.ItemsSource = playlists;

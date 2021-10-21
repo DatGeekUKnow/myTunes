@@ -11,7 +11,7 @@ using System.IO;
 using System.Xml;
 using System.Threading.Tasks;
 
-namespace hTunes
+namespace myTunes
 {
     public class MusicRepo
     {
@@ -78,7 +78,7 @@ namespace hTunes
         /// <param name="filename">MP3 filename</param>
         /// <returns>Song created from the MP3</returns>
         public Song AddSong(string filename)
-        {           
+        {
             // PM> Install-Package taglib
             // http://stackoverflow.com/questions/1750464/how-to-read-and-write-id3-tags-to-an-mp3-in-c
             TagLib.File file = TagLib.File.Create(filename);

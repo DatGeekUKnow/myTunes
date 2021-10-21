@@ -1,4 +1,4 @@
-﻿namespace hTunes
+﻿namespace myTunes
 {
     public class Song
     {
