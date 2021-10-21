@@ -8,10 +8,14 @@
         Title="myTunes by Garrett Harr &amp; Casey Whitener" Height="500" Width="800" Background="#FF2B2525" Foreground="White">
     <Grid>
         <ToolBar Name="myToolBar" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="40" Background="#FF3D3737" ToolBarTray.IsLocked="True" Foreground="#FF12F936" Loaded="myToolBar_Loaded"/>
-        <ListBox Name="playlistListBox" Height="375" Width="175" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0" BorderBrush="#FF12F936" Background="#FF3D3737">
-
+        <ListBox Name="playlistListBox" Height="375" Width="175" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0" BorderBrush="#FF12F936" Background="#FF3D3737" Foreground="GhostWhite" FontFamily="MV Boli" FontSize="15">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding name}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
-        <DataGrid Name="musicDataGrid" Width="575" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,50,0,0" Background="#FF3D3737" BorderBrush="#FF12F936" Foreground="GhostWhite" HorizontalGridLinesBrush="#FFA6A3A3" VerticalGridLinesBrush="#FFA6A3A3" CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" FontFamily="MV Boli">
+        <DataGrid Name="musicDataGrid" Width="575" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,50,0,0" Background="#FF3D3737" BorderBrush="#FF12F936" Foreground="GhostWhite" HorizontalGridLinesBrush="#FFA6A3A3" VerticalGridLinesBrush="#FFA6A3A3" CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" FontFamily="MV Boli" SelectionMode="Single">
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
                     <Setter Property="Background" Value="#FF2B2828"/>

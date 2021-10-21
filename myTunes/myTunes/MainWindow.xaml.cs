@@ -21,17 +21,18 @@ namespace myTunes
     /// </summary>
     public partial class MainWindow : Window
     {
-        DataSet musicDataSet = new DataSet();
         public MainWindow()
         {
             InitializeComponent();
 
             // Link to database
+            DataSet musicDataSet = new DataSet();
             musicDataSet.ReadXmlSchema("music.xsd");
             musicDataSet.ReadXml("music.xml");
 
             // initialize data grid to music located in music.xml
             musicDataGrid.ItemsSource = musicDataSet.Tables["song"].DefaultView;
+            playlistListBox.ItemsSource = musicDataSet.Tables["playlist"].AsDataView();
         }
 
         // https://stackoverflow.com/questions/4662428/how-to-hide-arrow-on-right-side-of-a-toolbar/4662570
