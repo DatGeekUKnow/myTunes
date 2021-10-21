@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,14 @@ namespace myTunes
         public MainWindow()
         {
             InitializeComponent();
-           
+
+            // Link to database
+            DataSet musicDataSet = new DataSet();
+            musicDataSet.ReadXmlSchema("music.xsd");
+            musicDataSet.ReadXml("music.xml");
+
+            // initialize data grid to music located in music.xml
+            musicDataGrid.ItemsSource = musicDataSet.Tables["song"].DefaultView;
         }
 
         // https://stackoverflow.com/questions/4662428/how-to-hide-arrow-on-right-side-of-a-toolbar/4662570
