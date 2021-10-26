@@ -24,10 +24,12 @@ namespace myTunes
     {
         private readonly MusicRepo musicRepo;
         private readonly ObservableCollection<string> playlists;
-        
+        private readonly MediaPlayer mediaPlayer;
+
         public MainWindow()
         {
             InitializeComponent();
+            mediaPlayer = new MediaPlayer();
 
             try
             {
@@ -43,14 +45,10 @@ namespace myTunes
             playlists = new ObservableCollection<string>(musicRepo.Playlists);
             playlists.Insert(0, "All Music");
 
-            // Link to database
-            DataSet musicDataSet = new DataSet();
-            musicDataSet.ReadXmlSchema("music.xsd");
-            musicDataSet.ReadXml("music.xml");
 
             // TODO: update playlists list dynamically, look into McCown's Observable Collection example
             // initialize data grid to music located in music.xml
-            musicDataGrid.ItemsSource = musicDataSet.Tables["song"].DefaultView;
+            musicDataGrid.ItemsSource = musicRepo.Songs.DefaultView;
             playlistListBox.ItemsSource = playlists;
         }
 
@@ -69,6 +67,37 @@ namespace myTunes
             if (mainPanelBorder != null)
             {
                 mainPanelBorder.Margin = new Thickness(0);
+            }
+        }
+
+        private void DeleteCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            DataRowView rowView = musicDataGrid.SelectedItem as DataRowView;
+            if (rowView != null)
+            {
+                // Extract the song ID from the selected song
+                musicRepo.DeleteSong(Convert.ToInt32(rowView.Row.ItemArray[0]));
+                musicRepo.Save();
+            }
+
+        }
+
+        private void PlayCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            mediaPlayer.Play();
+        }
+
+        private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (musicDataGrid.SelectedItem != null) e.CanExecute = true;
+        }
+
+        private void musicDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataRowView rowView = musicDataGrid.SelectedItem as DataRowView;
+            if (rowView != null)
+            {
+                Song s = musicRepo.GetSong(Convert.ToInt32(rowView.Row.ItemArray[0]));
             }
         }
     }

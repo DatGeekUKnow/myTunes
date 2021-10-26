@@ -7,7 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\delete.jfif" />
+    <None Remove="Images\play.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="taglib" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\delete.jfif" />
+    <EmbeddedResource Include="Images\play.png" />
   </ItemGroup>
 
   <ItemGroup>
