@@ -100,5 +100,10 @@ namespace myTunes
                 Song s = musicRepo.GetSong(Convert.ToInt32(rowView.Row.ItemArray[0]));
             }
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            musicRepo.Save();
+        }
     }
 }
