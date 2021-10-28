@@ -26,6 +26,8 @@ namespace myTunes
         private readonly ObservableCollection<string> playlists;
         private readonly MediaPlayer mediaPlayer;
 
+        private Song s;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -82,9 +84,16 @@ namespace myTunes
 
         }
 
-        private void PlayCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        private void PlayCommand_Executed(object sender, RoutedEventArgs e)
         {
+            mediaPlayer.Open(new Uri(s.Filename));
             mediaPlayer.Play();
+
+        }
+
+        private void stopButton_Click(object sender, RoutedEventArgs e)
+        {
+            mediaPlayer.Stop();
         }
 
         private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -97,7 +106,7 @@ namespace myTunes
             DataRowView rowView = musicDataGrid.SelectedItem as DataRowView;
             if (rowView != null)
             {
-                Song s = musicRepo.GetSong(Convert.ToInt32(rowView.Row.ItemArray[0]));
+                s = musicRepo.GetSong(Convert.ToInt32(rowView.Row.ItemArray[0]));
             }
         }
 
@@ -105,5 +114,6 @@ namespace myTunes
         {
             musicRepo.Save();
         }
+
     }
 }

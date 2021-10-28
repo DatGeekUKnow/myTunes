@@ -45,6 +45,15 @@
     <length>2:21</length>
     <genre>Pop</genre>
   </song>
+  <song>
+    <id>6</id>
+    <title>Lovely (Vessel)</title>
+    <artist>Twenty One Pilots</artist>
+    <album>Vessel</album>
+    <filename>C:\Users\garre\Music\Lovely-Vessel.mp3</filename>
+    <length>4:18</length>
+    <genre>Alternative Hip Hop</genre>
+  </song>
   <playlist>
     <name>Cool stuff</name>
   </playlist>
