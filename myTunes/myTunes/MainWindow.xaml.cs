@@ -80,6 +80,8 @@ namespace myTunes
                 // Extract the song ID from the selected song
                 musicRepo.DeleteSong(Convert.ToInt32(rowView.Row.ItemArray[0]));
                 musicRepo.Save();
+
+                musicDataGrid.ItemsSource = musicRepo.Songs.DefaultView;
             }
 
         }

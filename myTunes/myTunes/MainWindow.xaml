@@ -24,7 +24,7 @@
                             <Image Source="Images\play.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Command="Delete">
+                    <MenuItem Header="Remove" Command="Delete" >
                         <MenuItem.Icon>
                             <Image Source="Images\delete.jfif"/>
                         </MenuItem.Icon>
