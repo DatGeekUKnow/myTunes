@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="myTunes by Garrett Harr &amp; Casey Whitener" Height="500" Width="800" Background="#FF2B2525" Foreground="White">
     <Window.CommandBindings>
-        <CommandBinding Command="Delete" Executed="DeleteCommand_Executed" CanExecute="CommandBinding_CanExecute"/>
         <CommandBinding Command="Play" Executed="PlayCommand_Executed" CanExecute="CommandBinding_CanExecute"/>
     </Window.CommandBindings>
 
@@ -38,7 +37,7 @@
                             <Image Source="Images\play.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem x:Name="removeButton" Header="Remove" Command="Delete" >
+                    <MenuItem x:Name="removeButton" Header="Remove" Click="removeButton_Click">
                         <MenuItem.Icon>
                             <Image Source="Images\delete.jfif"/>
                         </MenuItem.Icon>

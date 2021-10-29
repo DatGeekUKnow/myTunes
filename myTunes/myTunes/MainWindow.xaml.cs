@@ -76,28 +76,6 @@ namespace myTunes
             }
         }
 
-        private void DeleteCommand_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            DataRowView rowView = musicDataGrid.SelectedItem as DataRowView;
-            if (rowView != null)
-            {
-                if(isPlaylistSelected)
-                {
-                    // Extract the song ID from the selected song
-                    musicRepo.DeleteSong(Convert.ToInt32(rowView.Row.ItemArray[0]));
-                    musicRepo.Save();
-
-                    musicDataGrid.ItemsSource = musicRepo.SongsForPlaylist(currenctPlaylist).DefaultView;
-                }
-                else
-                {
-                    musicDataGrid.ItemsSource = musicRepo.Songs.DefaultView;
-                }
-
-            }
-
-        }
-
         private void PlayCommand_Executed(object sender, RoutedEventArgs e)
         {
             mediaPlayer.Open(new Uri(s.Filename));
@@ -112,7 +90,7 @@ namespace myTunes
 
         private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            if (musicDataGrid.SelectedItem != null) e.CanExecute = true;
+            e.CanExecute = (musicDataGrid.SelectedItem != null);
         }
 
         private void musicDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -187,6 +165,26 @@ namespace myTunes
                 removeButton.Header = "Remove from Playlist";
                 currenctPlaylist = playlistListBox.SelectedItem.ToString();
                 musicDataGrid.ItemsSource = musicRepo.SongsForPlaylist(playlist).DefaultView;
+            }
+        }
+
+        private void removeButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataRowView rowView = musicDataGrid.SelectedItem as DataRowView;
+            if (rowView != null)
+            {
+                if (isPlaylistSelected)
+                {
+                    // Extract the song ID from the selected song
+                    //musicRepo.DeleteSong(Convert.ToInt32(rowView.Row.ItemArray[0]));
+                    musicRepo.RemoveSongFromPlaylist(musicDataGrid.SelectedIndex, Convert.ToInt32(rowView.Row.ItemArray[0]), currenctPlaylist);
+
+                    musicDataGrid.ItemsSource = musicRepo.SongsForPlaylist(currenctPlaylist).DefaultView;
+                } else
+                {
+                    musicDataGrid.ItemsSource = musicRepo.Songs.DefaultView;
+                }
+
             }
         }
     }
