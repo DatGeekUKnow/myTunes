@@ -29,6 +29,8 @@ namespace myTunes
         private Song s;
         private Point startPoint;
         private string playlistName;
+        private string currenctPlaylist;
+        private bool isPlaylistSelected = false;
 
         public MainWindow()
         {
@@ -79,11 +81,19 @@ namespace myTunes
             DataRowView rowView = musicDataGrid.SelectedItem as DataRowView;
             if (rowView != null)
             {
-                // Extract the song ID from the selected song
-                musicRepo.DeleteSong(Convert.ToInt32(rowView.Row.ItemArray[0]));
-                musicRepo.Save();
+                if(isPlaylistSelected)
+                {
+                    // Extract the song ID from the selected song
+                    musicRepo.DeleteSong(Convert.ToInt32(rowView.Row.ItemArray[0]));
+                    musicRepo.Save();
 
-                musicDataGrid.ItemsSource = musicRepo.Songs.DefaultView;
+                    musicDataGrid.ItemsSource = musicRepo.SongsForPlaylist(currenctPlaylist).DefaultView;
+                }
+                else
+                {
+                    musicDataGrid.ItemsSource = musicRepo.Songs.DefaultView;
+                }
+
             }
 
         }
@@ -167,10 +177,15 @@ namespace myTunes
             string playlist = playlistListBox.SelectedItem.ToString();
             if(playlist == "All Music")
             {
+                isPlaylistSelected = false;
+                removeButton.Header = "Remove";
                 musicDataGrid.ItemsSource = musicRepo.Songs.DefaultView;
             }
             else
             {
+                isPlaylistSelected = true;
+                removeButton.Header = "Remove from Playlist";
+                currenctPlaylist = playlistListBox.SelectedItem.ToString();
                 musicDataGrid.ItemsSource = musicRepo.SongsForPlaylist(playlist).DefaultView;
             }
         }
