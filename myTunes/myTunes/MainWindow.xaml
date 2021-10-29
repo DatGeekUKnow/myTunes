@@ -13,10 +13,24 @@
 
     <Grid>
         <ToolBar Name="myToolBar" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="40" Background="#FF3D3737" ToolBarTray.IsLocked="True" Foreground="#FF12F936" Loaded="myToolBar_Loaded"/>
-        <ListBox Name="playlistListBox" Height="375" Width="175" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0" BorderBrush="#FF12F936" Background="#FF3D3737" Foreground="GhostWhite" FontFamily="MV Boli" FontSize="15">
-
+        <ListBox Name="playlistListBox" Height="375" Width="175" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0" 
+                 BorderBrush="#FF12F936" Background="#FF3D3737" Foreground="GhostWhite" 
+                 FontFamily="MV Boli" FontSize="15"
+                 SelectionChanged="playlistListBox_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding}" AllowDrop="True" DragOver="Label_DragOver" Drop="Label_Drop"></Label>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
-        <DataGrid Name="musicDataGrid" VerticalAlignment="Top" Margin="210,50,15,0" Background="#FF3D3737" BorderBrush="#FF12F936" Foreground="GhostWhite" HorizontalGridLinesBrush="#FFA6A3A3" VerticalGridLinesBrush="#FFA6A3A3" CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" FontFamily="MV Boli" SelectionMode="Single" SelectionChanged="musicDataGrid_SelectionChanged">
+        <DataGrid Name="musicDataGrid" VerticalAlignment="Top" Margin="210,50,15,0" 
+                  Background="#FF3D3737" BorderBrush="#FF12F936" Foreground="GhostWhite" 
+                  HorizontalGridLinesBrush="#FFA6A3A3" VerticalGridLinesBrush="#FFA6A3A3" 
+                  CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" 
+                  HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" 
+                  FontFamily="MV Boli" SelectionMode="Single" SelectionChanged="musicDataGrid_SelectionChanged"
+                  MouseMove="musicDataGrid_MouseMove"
+                  PreviewMouseMove="musicDataGrid_PreviewMouseMove">
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem Command="Play">

@@ -27,6 +27,8 @@ namespace myTunes
         private readonly MediaPlayer mediaPlayer;
 
         private Song s;
+        private Point startPoint;
+        private string playlistName;
 
         public MainWindow()
         {
@@ -117,5 +119,60 @@ namespace myTunes
             musicRepo.Save();
         }
 
+        private void Label_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effects = DragDropEffects.None;
+
+            Label playlist = sender as Label;
+
+            if(playlist != null)
+            {
+                e.Effects = DragDropEffects.Copy;
+                playlistName = playlist.Content.ToString();
+            }
+        }
+
+        private void Label_Drop(object sender, DragEventArgs e)
+        {
+            if(e.Data.GetDataPresent(DataFormats.StringFormat))
+            {
+                int dataString = Convert.ToInt32(e.Data.GetData(DataFormats.StringFormat));
+
+                musicRepo.AddSongToPlaylist(dataString, playlistName);
+            }
+        }
+
+        private void musicDataGrid_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed && 
+                musicDataGrid.SelectedItems.Count > 0)
+            {
+                // Get the song ID from the currently selected row
+                DataRowView rowView = musicDataGrid.SelectedItem as DataRowView;
+                string songId = rowView.Row.ItemArray[0].ToString();
+
+                DragDrop.DoDragDrop(musicDataGrid, songId, DragDropEffects.Copy);
+            }
+
+        }
+
+        private void musicDataGrid_PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            // Store the mouse position
+            startPoint = e.GetPosition(null);
+        }
+
+        private void playlistListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string playlist = playlistListBox.SelectedItem.ToString();
+            if(playlist == "All Music")
+            {
+                musicDataGrid.ItemsSource = musicRepo.Songs.DefaultView;
+            }
+            else
+            {
+                musicDataGrid.ItemsSource = musicRepo.SongsForPlaylist(playlist).DefaultView;
+            }
+        }
     }
 }
