@@ -7,8 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\delete.jfif" />
+    <None Remove="Images\about.png" />
+    <None Remove="Images\addPlaylist.png" />
+    <None Remove="Images\addSong.png" />
+    <None Remove="Images\delete.png" />
     <None Remove="Images\play.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\about.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\addPlaylist.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -16,8 +28,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Images\delete.jfif" />
-    <EmbeddedResource Include="Images\play.png" />
+    <Resource Include="Images\addSong.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\delete.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\play.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

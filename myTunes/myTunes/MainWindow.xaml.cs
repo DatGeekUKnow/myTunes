@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
@@ -186,6 +187,32 @@ namespace myTunes
                 }
 
             }
+        }
+
+        private void AddSong_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Music Files (*.mp3;*.m4a;*.wma;*.wav)|*.mp3;*.m4a;*.wma;*.wav";
+            openFileDialog.ShowDialog();
+
+            musicRepo.AddSong(openFileDialog.FileName);
+        }
+
+        private void AddPlaylist_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            InputDialog input = new InputDialog();
+            input.Owner = this;
+            if (input.ShowDialog() == true)
+            {
+                if (input.playlistName != "") musicRepo.AddPlaylist(input.playlistName);
+            }
+        }
+
+        private void About_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            AboutWindow aboutDialog = new AboutWindow();
+            aboutDialog.Owner = this;
+            aboutDialog.Show();
         }
     }
 }

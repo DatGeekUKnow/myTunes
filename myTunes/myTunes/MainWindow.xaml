@@ -5,25 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:myTunes"
         mc:Ignorable="d"
-        Title="myTunes by Garrett Harr &amp; Casey Whitener" Height="500" Width="800" Background="#FF2B2525" Foreground="White">
+        Title="myTunes by Garrett Harr &amp; Casey Whitener" Height="500" Width="800" Background="#FF1D1D1D" Foreground="White">
     <Window.CommandBindings>
         <CommandBinding Command="Play" Executed="PlayCommand_Executed" CanExecute="CommandBinding_CanExecute"/>
     </Window.CommandBindings>
-
     <Grid>
-        <ToolBar Name="myToolBar" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="40" Background="#FF3D3737" ToolBarTray.IsLocked="True" Foreground="#FF12F936" Loaded="myToolBar_Loaded"/>
+        <Grid.Resources>
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="Margin" Value="0,0,10,0"/>
+                <Setter Property="Foreground" Value="GhostWhite"/>
+                <Setter Property="FontFamily" Value="MV Boli"/>
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+            <Style TargetType="{x:Type Image}">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
+        </Grid.Resources>
+        <ToolBar Name="myToolBar" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="40" Background="#FF232323" ToolBarTray.IsLocked="True" Foreground="#FF12F936" Loaded="myToolBar_Loaded">
+            <Image Source="Images\addSong.png" MouseLeftButtonDown="AddSong_MouseLeftButtonDown" Margin="5,0,5,0">
+                    <Image.ToolTip>
+                        <ToolTip Content="Open"/>
+                    </Image.ToolTip>
+                </Image>
+            <Image Source="Images\addPlaylist.png" MouseLeftButtonDown="AddPlaylist_MouseLeftButtonDown" Margin="5,3,5,0" >
+                <Image.ToolTip>
+                    <ToolTip Content="New Playlist"/>
+                </Image.ToolTip>
+            </Image>
+            <Image Source="Images\about.png" MouseLeftButtonDown="About_MouseLeftButtonDown" Margin="5,0,0,0">
+                    <Image.ToolTip>
+                        <ToolTip Content="About"/>
+                    </Image.ToolTip>
+                </Image>
+        </ToolBar>
         <ListBox Name="playlistListBox" Height="375" Width="175" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0" 
-                 BorderBrush="#FF12F936" Background="#FF3D3737" Foreground="GhostWhite" 
+                 BorderBrush="#FF12F936" Background="#FF232323" Foreground="GhostWhite" 
                  FontFamily="MV Boli" FontSize="15"
                  SelectionChanged="playlistListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Label Content="{Binding}" AllowDrop="True" DragOver="Label_DragOver" Drop="Label_Drop"></Label>
+                    <Label Content="{Binding}" AllowDrop="True" DragOver="Label_DragOver" Drop="Label_Drop" Foreground="GhostWhite"></Label>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <DataGrid Name="musicDataGrid" VerticalAlignment="Top" Margin="210,50,15,0" 
-                  Background="#FF3D3737" BorderBrush="#FF12F936" Foreground="GhostWhite" 
+                  BorderBrush="#FF12F936" Foreground="GhostWhite" Background="#FF232323"
                   HorizontalGridLinesBrush="#FFA6A3A3" VerticalGridLinesBrush="#FFA6A3A3" 
                   CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" 
                   HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" 
@@ -39,18 +66,18 @@
                     </MenuItem>
                     <MenuItem x:Name="removeButton" Header="Remove" Click="removeButton_Click">
                         <MenuItem.Icon>
-                            <Image Source="Images\delete.jfif"/>
+                            <Image Source="Images\delete.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
             </DataGrid.ContextMenu>
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
-                    <Setter Property="Background" Value="#FF2B2828"/>
+                    <Setter Property="Background" Value="#FF232323"/>
                     <Setter Property="FontSize" Value="18"/>
                 </Style>
                 <Style TargetType="DataGridColumnHeader">
-                    <Setter Property="Background" Value="#FF1D1D1D"/>
+                    <Setter Property="Background" Value="#FF232323"/>
                     <Setter Property="FontSize" Value="20"/>
                 </Style>
             </DataGrid.Resources>
@@ -62,7 +89,17 @@
                 <DataGridTextColumn Header="Genre" Binding="{Binding genre}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="playButton" Content="Play" FontFamily="MV Boli" HorizontalAlignment="Left" Margin="20,433,0,0" VerticalAlignment="Top" Click="PlayCommand_Executed" Width="59"/>
+        <Button x:Name="playButton" Click="PlayCommand_Executed" Height="23" Width="65" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,433,0,0" BorderBrush="#FF3D3737">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <StackPanel Orientation="Horizontal">
+                <Image Source="Images\play.png"/>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Play</TextBlock>
+            </StackPanel>
+        </Button>
         <Button x:Name="stopButton" Content="Stop" FontFamily="MV Boli" HorizontalAlignment="Left" Margin="98,433,0,0" VerticalAlignment="Top" Click="stopButton_Click" Width="59"/>
 
     </Grid>
