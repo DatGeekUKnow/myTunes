@@ -43,7 +43,7 @@
                 </Image.ToolTip>
             </Image>
         </ToolBar>
-        <Border x:Name="HeightHelperPanel" Grid.Row="0" Width="Auto" Margin="0,50,0,59">
+        <Border x:Name="HeightHelperPanel" Grid.Row="0" Width="Auto" Margin="0,50,0,35">
             <ListBox Name="playlistListBox" Height="{Binding Path=ActualHeight, ElementName=HeightHelperPanel}" Width="175" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" 
                  BorderBrush="#FF12F936" Background="#FF232323" Foreground="GhostWhite" 
                  FontFamily="MV Boli" FontSize="15"
