@@ -377,7 +377,7 @@ namespace myTunes
             primaryKeys.Add(songId);
             primaryKeys.Add(playlist);
             primaryKeys.Add(position);
-            table.Rows.Remove(table.Rows.Find(primaryKeys.ToArray()));  
+            table.Rows.Remove(table.Rows.Find(primaryKeys.ToArray()));
 
             // Decrement position by 1 for each song in this playlist that is positioned after
             // this one

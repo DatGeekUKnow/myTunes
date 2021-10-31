@@ -9,7 +9,33 @@
         Title="myTunes by Garrett Harr &amp; Casey Whitener" Height="500" Width="800" Background="#FF1D1D1D" Foreground="White">
     <Window.CommandBindings>
         <CommandBinding Command="Play" Executed="PlayCommand_Executed" CanExecute="CommandBinding_CanExecute"/>
+        <CommandBinding Command="Stop" CanExecute="StopCommand_CanExecute" Executed="StopCommand_Executed"/>
     </Window.CommandBindings>
+    <Window.Resources>
+        <Style x:Key="PlayButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="MV Boli"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Green"/>
+                    <Setter Property="BorderBrush" Value="Green"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="RemoveButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="MV Boli"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Red"/>
+                    <Setter Property="BorderBrush" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.Resources>
             <Style TargetType="{x:Type TextBlock}">
@@ -95,18 +121,20 @@
                 <DataGridTextColumn Header="Genre" Binding="{Binding genre}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="playButton" Click="PlayCommand_Executed" Height="23" Width="65" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,10" BorderBrush="#FF3D3737">
+        <Button x:Name="playButton" Command="Play" Content="Play" Style="{StaticResource PlayButtonStyle}" Click="PlayCommand_Executed" Height="23" Width="65" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,10">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </Button.Resources>
-            <StackPanel Orientation="Horizontal">
-                <Image Source="Images\play.png"/>
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Play</TextBlock>
-            </StackPanel>
         </Button>
-        <Button x:Name="stopButton" Content="Stop" FontFamily="MV Boli" HorizontalAlignment="Left" Margin="98,0,0,10" VerticalAlignment="Bottom" Click="stopButton_Click" Height="23" Width="59"/>
-
+        
+        <Button x:Name="stopButton" Command="Stop" Content="Stop" Style="{StaticResource RemoveButtonStyle}" HorizontalAlignment="Left" Margin="98,0,0,10" VerticalAlignment="Bottom" Click="stopButton_Click" Height="23" Width="59">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>

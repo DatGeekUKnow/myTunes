@@ -32,6 +32,7 @@ namespace myTunes
         private string playlistName;
         private string currenctPlaylist;
         private bool isPlaylistSelected = false;
+        private bool isPlaying = false;
 
         public MainWindow()
         {
@@ -79,19 +80,31 @@ namespace myTunes
 
         private void PlayCommand_Executed(object sender, RoutedEventArgs e)
         {
+            isPlaying = true;
             mediaPlayer.Open(new Uri(s.Filename));
             mediaPlayer.Play();
 
         }
 
+        private void StopCommand_Executed(object sender, RoutedEventArgs e)
+        {
+            isPlaying = false;
+            mediaPlayer.Stop();
+        }
+
         private void stopButton_Click(object sender, RoutedEventArgs e)
         {
-            mediaPlayer.Stop();
+            //mediaPlayer.Stop();
         }
 
         private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = (musicDataGrid.SelectedItem != null);
+        }
+
+        private void StopCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = isPlaying;
         }
 
         private void musicDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -178,7 +191,14 @@ namespace myTunes
                     musicDataGrid.ItemsSource = musicRepo.SongsForPlaylist(currenctPlaylist).DefaultView;
                 } else
                 {
-                    musicDataGrid.ItemsSource = musicRepo.Songs.DefaultView;
+                    MessageBoxResult result = MessageBox.Show("Are you sure you want to remove this song?", "Confirmation", MessageBoxButton.YesNo);
+
+                    if(result == MessageBoxResult.Yes)
+                    {
+                        musicRepo.DeleteSong(Convert.ToInt32(rowView.Row.ItemArray[0]));
+                        musicDataGrid.ItemsSource = musicRepo.Songs.DefaultView;
+                    }
+                    
                 }
 
             }
