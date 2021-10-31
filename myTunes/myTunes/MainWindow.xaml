@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:myTunes"
         mc:Ignorable="d"
+        Closing="Window_Closing"
         Title="myTunes by Garrett Harr &amp; Casey Whitener" Height="500" Width="800" Background="#FF1D1D1D" Foreground="White">
     <Window.CommandBindings>
         <CommandBinding Command="Play" Executed="PlayCommand_Executed" CanExecute="CommandBinding_CanExecute"/>
@@ -22,33 +23,38 @@
                 <Setter Property="HorizontalAlignment" Value="Center"/>
             </Style>
         </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <ToolBar Name="myToolBar" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="40" Background="#FF232323" ToolBarTray.IsLocked="True" Foreground="#FF12F936" Loaded="myToolBar_Loaded">
             <Image Source="Images\addSong.png" MouseLeftButtonDown="AddSong_MouseLeftButtonDown" Margin="5,0,5,0">
-                    <Image.ToolTip>
-                        <ToolTip Content="Open"/>
-                    </Image.ToolTip>
-                </Image>
+                <Image.ToolTip>
+                    <ToolTip Content="Open"/>
+                </Image.ToolTip>
+            </Image>
             <Image Source="Images\addPlaylist.png" MouseLeftButtonDown="AddPlaylist_MouseLeftButtonDown" Margin="5,3,5,0" >
                 <Image.ToolTip>
                     <ToolTip Content="New Playlist"/>
                 </Image.ToolTip>
             </Image>
             <Image Source="Images\about.png" MouseLeftButtonDown="About_MouseLeftButtonDown" Margin="5,0,0,0">
-                    <Image.ToolTip>
-                        <ToolTip Content="About"/>
-                    </Image.ToolTip>
-                </Image>
+                <Image.ToolTip>
+                    <ToolTip Content="About"/>
+                </Image.ToolTip>
+            </Image>
         </ToolBar>
-        <ListBox Name="playlistListBox" Height="375" Width="175" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0" 
+        <Border x:Name="HeightHelperPanel" Grid.Row="0" Width="Auto" Margin="0,50,0,59">
+            <ListBox Name="playlistListBox" Height="{Binding Path=ActualHeight, ElementName=HeightHelperPanel}" Width="175" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" 
                  BorderBrush="#FF12F936" Background="#FF232323" Foreground="GhostWhite" 
                  FontFamily="MV Boli" FontSize="15"
                  SelectionChanged="playlistListBox_SelectionChanged">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Label Content="{Binding}" AllowDrop="True" DragOver="Label_DragOver" Drop="Label_Drop" Foreground="GhostWhite"></Label>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding}" AllowDrop="True" DragOver="Label_DragOver" Drop="Label_Drop" Foreground="GhostWhite"></Label>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Border>
         <DataGrid Name="musicDataGrid" VerticalAlignment="Top" Margin="210,50,15,0" 
                   BorderBrush="#FF12F936" Foreground="GhostWhite" Background="#FF232323"
                   HorizontalGridLinesBrush="#FFA6A3A3" VerticalGridLinesBrush="#FFA6A3A3" 
@@ -89,7 +95,7 @@
                 <DataGridTextColumn Header="Genre" Binding="{Binding genre}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="playButton" Click="PlayCommand_Executed" Height="23" Width="65" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,433,0,0" BorderBrush="#FF3D3737">
+        <Button x:Name="playButton" Click="PlayCommand_Executed" Height="23" Width="65" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,10" BorderBrush="#FF3D3737">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -100,7 +106,7 @@
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Play</TextBlock>
             </StackPanel>
         </Button>
-        <Button x:Name="stopButton" Content="Stop" FontFamily="MV Boli" HorizontalAlignment="Left" Margin="98,433,0,0" VerticalAlignment="Top" Click="stopButton_Click" Width="59"/>
+        <Button x:Name="stopButton" Content="Stop" FontFamily="MV Boli" HorizontalAlignment="Left" Margin="98,0,0,10" VerticalAlignment="Bottom" Click="stopButton_Click" Height="23" Width="59"/>
 
     </Grid>
 </Window>

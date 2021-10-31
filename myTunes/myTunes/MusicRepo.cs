@@ -244,7 +244,6 @@ namespace myTunes
                 // Probably a playlist with the same name was being added
                 return false;
             }
-
             return true;
         }
 

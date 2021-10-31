@@ -24,7 +24,7 @@ namespace myTunes
     public partial class MainWindow : Window
     {
         private readonly MusicRepo musicRepo;
-        private readonly ObservableCollection<string> playlists;
+        private ObservableCollection<string> playlists;
         private readonly MediaPlayer mediaPlayer;
 
         private Song s;
@@ -101,11 +101,6 @@ namespace myTunes
             {
                 s = musicRepo.GetSong(Convert.ToInt32(rowView.Row.ItemArray[0]));
             }
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            musicRepo.Save();
         }
 
         private void Label_DragOver(object sender, DragEventArgs e)
@@ -206,6 +201,9 @@ namespace myTunes
             {
                 if (input.playlistName != "") musicRepo.AddPlaylist(input.playlistName);
             }
+            playlists = new ObservableCollection<string>(musicRepo.Playlists);
+            playlists.Insert(0, "All Music");
+            playlistListBox.ItemsSource = playlists;
         }
 
         private void About_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -213,6 +211,11 @@ namespace myTunes
             AboutWindow aboutDialog = new AboutWindow();
             aboutDialog.Owner = this;
             aboutDialog.Show();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            musicRepo.Save();
         }
     }
 }
