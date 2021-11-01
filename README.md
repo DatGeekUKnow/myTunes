@@ -4,22 +4,21 @@
  All requirements for the procrastination penalty were met on time.
  
  Additional Requirements:
- -Styles used to redesign the play and stop button, as well as adding mouse over animations
+ - Styles used to redesign the play and stop button, as well as adding mouse over animations
  
  Garrett Harr 50%:
- -Drag and drop adding to playlists
- -Playing songs
- -Stoping songs
- -Removing songs from All Music and playlists
- -Button design/enable and disable function
- 
+ - Drag and drop adding to playlists
+ - Playing songs
+ - Stoping songs
+ - Removing songs from All Music and playlists
+ - Button design/enable and disable function
  
  Casey Whitener 50%:
- -Songs displayed in data grid
- -Toolbar icons
- -About dialog box
- -Resizeable window/datagrid not editable
- -Creating Playlists
- -storing songs in music.xml
- -Listing playlists and songs
- -Adding songs
+ - Songs displayed in data grid
+ - Toolbar icons
+ - About dialog box
+ - Resizeable window/datagrid not editable
+ - Creating Playlists
+ - storing songs in music.xml
+ - Listing playlists and songs
+ - Adding songs
