@@ -186,7 +186,8 @@ namespace myTunes
                     musicDataGrid.ItemsSource = musicRepo.SongsForPlaylist(currenctPlaylist).DefaultView;
                 } else
                 {
-                    MessageBoxResult result = MessageBox.Show("Are you sure you want to remove this song?", "Confirmation", MessageBoxButton.YesNo);
+                    MessageBoxResult result = MessageBox.Show("Are you sure you want to remove this song?", "Confirmation",
+                        MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                     if(result == MessageBoxResult.Yes)
                     {
