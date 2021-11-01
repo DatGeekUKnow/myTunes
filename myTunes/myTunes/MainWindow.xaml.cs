@@ -92,11 +92,6 @@ namespace myTunes
             mediaPlayer.Stop();
         }
 
-        private void stopButton_Click(object sender, RoutedEventArgs e)
-        {
-            //mediaPlayer.Stop();
-        }
-
         private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = (musicDataGrid.SelectedItem != null);
@@ -186,7 +181,7 @@ namespace myTunes
                 {
                     // Extract the song ID from the selected song
                     //musicRepo.DeleteSong(Convert.ToInt32(rowView.Row.ItemArray[0]));
-                    musicRepo.RemoveSongFromPlaylist(musicDataGrid.SelectedIndex, Convert.ToInt32(rowView.Row.ItemArray[0]), currenctPlaylist);
+                    musicRepo.RemoveSongFromPlaylist(Convert.ToInt32(rowView.Row.ItemArray[1]), Convert.ToInt32(rowView.Row.ItemArray[0]), currenctPlaylist);
 
                     musicDataGrid.ItemsSource = musicRepo.SongsForPlaylist(currenctPlaylist).DefaultView;
                 } else

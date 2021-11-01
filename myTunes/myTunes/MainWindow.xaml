@@ -132,7 +132,7 @@
             </Button.Resources>
         </Button>
         
-        <Button x:Name="stopButton" Command="Stop" Content="Stop" Style="{StaticResource RemoveButtonStyle}" HorizontalAlignment="Left" Margin="98,0,0,10" VerticalAlignment="Bottom" Click="stopButton_Click" Height="23" Width="59">
+        <Button x:Name="stopButton" Command="Stop" Content="Stop" Style="{StaticResource RemoveButtonStyle}" HorizontalAlignment="Left" Margin="98,0,0,10" VerticalAlignment="Bottom" Height="23" Width="59">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
