@@ -12,6 +12,7 @@
  - Stoping songs
  - Removing songs from All Music and playlists
  - Button design/enable and disable function
+ - Displaying songs from selected playlists
  
  Casey Whitener 50%:
  - Songs displayed in data grid
