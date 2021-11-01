@@ -31,7 +31,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid FocusManager.FocusedElement="{Binding ElementName=newPlaylistName}">
+    <Grid>
         <StackPanel Orientation="Horizontal" Height="56" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="New Playlist Title: " FontFamily="MV Boli" Margin="0,3,0,0" Foreground="GhostWhite" FontSize="20" VerticalAlignment="Top"/>
             <TextBox x:Name="newPlaylistName" Width="200" Height="25" Margin="0,4,15,0" Background="Transparent" BorderBrush="#FF00C83C" Foreground="GhostWhite" VerticalAlignment="Top" FontSize="20"/>

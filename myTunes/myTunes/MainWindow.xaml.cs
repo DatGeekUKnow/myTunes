@@ -213,6 +213,7 @@ namespace myTunes
         {
             InputDialog input = new InputDialog();
             input.Owner = this;
+            input.newPlaylistName.Focus();
             if (input.ShowDialog() == true)
             {
                 if (input.playlistName != "") musicRepo.AddPlaylist(input.playlistName);
@@ -251,6 +252,10 @@ namespace myTunes
             if (oldPlaylistName == "All Music") return;
             InputDialog input = new InputDialog();
             input.Owner = this;
+            input.newPlaylistName.Text = oldPlaylistName;
+            input.newPlaylistName.SelectAll();
+            input.newPlaylistName.Focus();
+            
             if (input.ShowDialog() == true)
             {
                 if (input.playlistName != "" && input.playlistName != "All Music") musicRepo.RenamePlaylist(oldPlaylistName, input.playlistName);

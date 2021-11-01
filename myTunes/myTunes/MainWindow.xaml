@@ -79,12 +79,12 @@
                         <Label Content="{Binding}" AllowDrop="True" DragOver="Label_DragOver" Drop="Label_Drop" Foreground="GhostWhite" >
                             <Label.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem x:Name="playlistRemoveButton" Header="Remove Playlist" Click="playlistRemoveButton_Click">
+                                    <MenuItem Header="Rename..." Click="RenameMenuItem_Click"/>
+                                    <MenuItem x:Name="playlistRemoveButton" Header="Remove" Click="playlistRemoveButton_Click">
                                         <MenuItem.Icon>
                                             <Image Source="Images\delete.png"/>
                                         </MenuItem.Icon>
                                     </MenuItem>
-                                    <MenuItem Header="Rename..." Click="RenameMenuItem_Click"/>
                                 </ContextMenu>
                             </Label.ContextMenu>
                         </Label>
