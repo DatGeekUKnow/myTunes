@@ -156,6 +156,7 @@ namespace myTunes
 
         private void playlistListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (playlistListBox.SelectedItem == null) return;
             string playlist = playlistListBox.SelectedItem.ToString();
             if(playlist == "All Music")
             {
@@ -231,6 +232,32 @@ namespace myTunes
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             musicRepo.Save();
+        }
+        
+        private void playlistRemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            var current = playlistListBox.SelectedItem.ToString();
+            if (current == null || current == "All Music") return;
+            musicRepo.DeletePlaylist(current.ToString());
+            playlists = new ObservableCollection<string>(musicRepo.Playlists);
+            playlists.Insert(0, "All Music");
+            playlistListBox.ItemsSource = playlists;
+            musicRepo.Save();
+        }
+
+        private void RenameMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var oldPlaylistName = playlistListBox.SelectedItem as string;
+            if (oldPlaylistName == "All Music") return;
+            InputDialog input = new InputDialog();
+            input.Owner = this;
+            if (input.ShowDialog() == true)
+            {
+                if (input.playlistName != "" && input.playlistName != "All Music") musicRepo.RenamePlaylist(oldPlaylistName, input.playlistName);
+            }
+            playlists = new ObservableCollection<string>(musicRepo.Playlists);
+            playlists.Insert(0, "All Music");
+            playlistListBox.ItemsSource = playlists;
         }
     }
 }

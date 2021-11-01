@@ -73,13 +73,21 @@
             <ListBox Name="playlistListBox" Height="{Binding Path=ActualHeight, ElementName=HeightHelperPanel}" Width="175" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" 
                  BorderBrush="#FF00C83C" Background="#FF232323" Foreground="GhostWhite" 
                  FontFamily="MV Boli" FontSize="15"
-                 SelectionChanged="playlistListBox_SelectionChanged">
+                 SelectionChanged="playlistListBox_SelectionChanged" HorizontalContentAlignment="Stretch">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Label Content="{Binding}" AllowDrop="True" DragOver="Label_DragOver" Drop="Label_Drop" Foreground="GhostWhite"></Label>
-                        <DataTemplate.Triggers>
-                            
-                        </DataTemplate.Triggers>
+                        <Label Content="{Binding}" AllowDrop="True" DragOver="Label_DragOver" Drop="Label_Drop" Foreground="GhostWhite" >
+                            <Label.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem x:Name="playlistRemoveButton" Header="Remove Playlist" Click="playlistRemoveButton_Click">
+                                        <MenuItem.Icon>
+                                            <Image Source="Images\delete.png"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Header="Rename..." Click="RenameMenuItem_Click"/>
+                                </ContextMenu>
+                            </Label.ContextMenu>
+                        </Label>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
