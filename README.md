@@ -6,7 +6,7 @@
  Additional Requirements:
  - Styles used to redesign the play and stop button, as well as adding mouse over animations
  
- Garrett Harr 50%:
+ Garrett Harr 40%:
  - Drag and drop adding to playlists
  - Playing songs
  - Stoping songs
@@ -14,7 +14,7 @@
  - Button design/enable and disable function
  - Displaying songs from selected playlists
  
- Casey Whitener 50%:
+ Casey Whitener 60%:
  - Songs displayed in data grid
  - Toolbar icons
  - About dialog box
@@ -23,3 +23,5 @@
  - storing songs in music.xml
  - Listing playlists and songs
  - Adding songs
+ - Window Design
+ - Context Menu
