@@ -4,14 +4,20 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon></ApplicationIcon>
+    <Win32Resource />
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Images\about.png" />
     <None Remove="Images\addPlaylist.png" />
     <None Remove="Images\addSong.png" />
+    <None Remove="Images\Atom.png" />
     <None Remove="Images\delete.png" />
     <None Remove="Images\play.png" />
+    <None Remove="Images\taskbar_icon.ico" />
+    <None Remove="play.png" />
+    <None Remove="taskbar_icon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,12 +37,20 @@
     <Resource Include="Images\addSong.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\Atom.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\delete.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\play.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\taskbar_icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="play.png" />
+    <Resource Include="taskbar_icon.png" />
   </ItemGroup>
 
   <ItemGroup>

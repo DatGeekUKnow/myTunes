@@ -209,8 +209,7 @@ namespace myTunes
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Music Files (*.mp3;*.m4a;*.wma;*.wav)|*.mp3;*.m4a;*.wma;*.wav";
             openFileDialog.ShowDialog();
-
-            musicRepo.AddSong(openFileDialog.FileName);
+            if (openFileDialog.FileName != "") musicRepo.AddSong(openFileDialog.FileName);
         }
 
         private void AddPlaylist_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

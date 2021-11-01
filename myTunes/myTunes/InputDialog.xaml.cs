@@ -42,8 +42,9 @@ namespace myTunes
 
         private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            if (e.Key == Key.Enter && newPlaylistName.IsFocused)
             {
+
                 OKButton_Click(sender, e);
             }
         }

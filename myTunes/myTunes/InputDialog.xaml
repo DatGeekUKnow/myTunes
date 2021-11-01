@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:myTunes"
         PreviewKeyDown="Window_PreviewKeyDown"
-        mc:Ignorable="d" Height="119" Width="484" Background="#FF1D1D1D" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+        mc:Ignorable="d" Height="119" Width="484" Background="#FF1D1D1D" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" ShowInTaskbar="False">
     <Window.Resources>
         <Style x:Key="MyButtonStyle" TargetType="Button">
             <Setter Property="OverridesDefaultStyle" Value="True"/>
@@ -14,7 +14,7 @@
             <Setter Property="Foreground" Value="GhostWhite"/>
             <Setter Property="Height" Value="20"/>
             <Setter Property="FontFamily" Value="MV Boli"/>
-            <Setter Property="Background" Value="Green"/>
+            <Setter Property="Background" Value="#FF00C83C"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -31,10 +31,10 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid>
-        <StackPanel Orientation="Horizontal" Height="56" VerticalAlignment="Center" HorizontalAlignment="Center" FocusManager.FocusedElement="{Binding ElementName=newPlaylistName}">
+    <Grid FocusManager.FocusedElement="{Binding ElementName=newPlaylistName}">
+        <StackPanel Orientation="Horizontal" Height="56" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="New Playlist Title: " FontFamily="MV Boli" Margin="0,3,0,0" Foreground="GhostWhite" FontSize="20" VerticalAlignment="Top"/>
-            <TextBox x:Name="newPlaylistName" Width="200" Height="25" Margin="0,4,15,0" Background="Transparent" BorderBrush="#FF12F936" Foreground="GhostWhite" VerticalAlignment="Top" FontSize="20"/>
+            <TextBox x:Name="newPlaylistName" Width="200" Height="25" Margin="0,4,15,0" Background="Transparent" BorderBrush="#FF00C83C" Foreground="GhostWhite" VerticalAlignment="Top" FontSize="20"/>
             <Button Style="{StaticResource MyButtonStyle}" Click="OKButton_Click" Margin="0,6,0,10" Content="OK">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">

@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:myTunes"
         mc:Ignorable="d"
-        Title="About" Height="208" Width="341" ResizeMode="NoResize" Topmost="True" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner">
-    <Grid Margin="0,0,0,271">
-        
+        Title="About" Height="148" Width="341" ResizeMode="NoResize" Topmost="True" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner"
+        Background="#FF1D1D1D" ShowInTaskbar="False">
+    <Grid>
+        <Image Source="\Images\Atom.png" Margin="19,11,220,49" RenderTransformOrigin="0.607,0.808"/>
+        <Label Content="MyTunes" HorizontalAlignment="Center" Margin="0,2,0,0" VerticalAlignment="Top" FontFamily="MV Boli" Foreground="#FF00C83C" FontSize="36"/>
+        <Label Content="By: Garrett Harr"  HorizontalAlignment="Center" Foreground="GhostWhite" VerticalAlignment="Top" FontFamily="MV Boli" Margin="0,56,0,0"/>
+        <Label Content="&amp; Casey Whitener" Foreground="GhostWhite" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="MV Boli" Margin="163,70,0,0"/>
+
     </Grid>
 </Window>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:myTunes"
         mc:Ignorable="d"
         Closing="Window_Closing"
-        Title="myTunes by Garrett Harr &amp; Casey Whitener" Height="500" Width="800" Background="#FF1D1D1D" Foreground="White">
+        Title="myTunes by Garrett Harr &amp; Casey Whitener" Height="500" Width="800" Background="#FF1D1D1D" Foreground="White" Icon="\Images\taskbar_icon.ico">
     <Window.CommandBindings>
         <CommandBinding Command="Play" Executed="PlayCommand_Executed" CanExecute="CommandBinding_CanExecute"/>
         <CommandBinding Command="Stop" CanExecute="StopCommand_CanExecute" Executed="StopCommand_Executed"/>
@@ -71,18 +71,21 @@
         </ToolBar>
         <Border x:Name="HeightHelperPanel" Grid.Row="0" Width="Auto" Margin="0,50,0,35">
             <ListBox Name="playlistListBox" Height="{Binding Path=ActualHeight, ElementName=HeightHelperPanel}" Width="175" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" 
-                 BorderBrush="#FF12F936" Background="#FF232323" Foreground="GhostWhite" 
+                 BorderBrush="#FF00C83C" Background="#FF232323" Foreground="GhostWhite" 
                  FontFamily="MV Boli" FontSize="15"
                  SelectionChanged="playlistListBox_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Label Content="{Binding}" AllowDrop="True" DragOver="Label_DragOver" Drop="Label_Drop" Foreground="GhostWhite"></Label>
+                        <DataTemplate.Triggers>
+                            
+                        </DataTemplate.Triggers>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </Border>
         <DataGrid Name="musicDataGrid" VerticalAlignment="Top" Margin="210,50,15,0" 
-                  BorderBrush="#FF12F936" Foreground="GhostWhite" Background="#FF232323"
+                  BorderBrush="#FF00C83C" Foreground="GhostWhite" Background="#FF232323"
                   HorizontalGridLinesBrush="#FFA6A3A3" VerticalGridLinesBrush="#FFA6A3A3" 
                   CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" 
                   HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" 
